@@ -1,4 +1,4 @@
-# node-express-recipe
+# Node Express Recipe
 Checklist for a simple Node.js/express web server 
 
 ## Node/express check list
