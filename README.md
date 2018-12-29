@@ -24,7 +24,7 @@ node_modules/
 4. Install express `npm install express --save`. Note: option `--save` might not be needed with newer versions of npm.
 5. Add start attribute to the scripts object inside package.json `"start": "node server/server.js"`
 6. Setup basic server.js
-```
+```javascript
 const express = require('express');
 const app = express();
 
@@ -37,7 +37,7 @@ app.listen(PORT, function() {
 });
 ```
 7. (Optional) Add bodyParser to allow straightforward access to request objects using `req.body`
-```
+```javascript
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
