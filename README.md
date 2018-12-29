@@ -70,7 +70,7 @@ $.ajax({
     method: 'POST',
     url: '/item',
     data: postedItem,
-}).then(function(requested) {
+}).then(function(response) {
     // -- do something
 });
 ```
