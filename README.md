@@ -1,9 +1,8 @@
 # Node Express Recipe
 Checklist for a simple Node.js/express web server 
 
-## Node/express check list
-
-- [ ] Create project structure
+## Node/express Setup Steps
+1. Create project structure
 ```
 project
  |___.gitignore
@@ -15,16 +14,16 @@ project
            |___style.css
            |___client.js
 ```
-- [ ] .gitignore
+2. Create `.gitignore`
 ```
 .DS_Store
 node_modules/
 *.log
 ```
-- [ ] Initialize NPM at the root directory of the project `npm init --yes`
-- [ ] Install express `npm install express --save`
-- [ ] Add start attribute to the scripts object inside package.json `"start": "node server/server.js"`
-- [ ] Setup basic server.js
+3. Initialize NPM at the root directory of the project `npm init --yes`. Note: option `--yes` skips setup questionnaire.
+4. Install express `npm install express --save`. Note: option `--save` might not be needed with newer versions of npm.
+5. Add start attribute to the scripts object inside package.json `"start": "node server/server.js"`
+6. Setup basic server.js
 ```
 const express = require('express');
 const app = express();
@@ -37,9 +36,41 @@ app.listen(PORT, function() {
     console.log('Server listening on:', PORT);
 });
 ```
-- [ ] Add bodyParser to allow straightforward access to request objects using `req.body`
+7. (Optional) Add bodyParser to allow straightforward access to request objects using `req.body`
 ```
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+```
+
+## Notes:
+```javascript
+// server.js GET
+app.get('/item', (req, res) => {
+    res.send(requestedItem);
+});
+
+// client.js GET (uses jQuery)
+$.ajax({
+    method: 'GET',
+    url: '/item',
+}).then(function(requestedItem) {
+    // -- do something with 'requestedItem'
+});
+
+// server.js POST
+app.post('/item', (req, res) => {
+    let postedItem = req.body;
+    // -- do something with postedItem
+    res.sendStatus(201);
+});
+
+// client.js POST
+$.ajax({
+    method: 'POST',
+    url: '/item',
+    data: postedItem,
+}).then(function(requested) {
+    // -- do something
+});
 ```
